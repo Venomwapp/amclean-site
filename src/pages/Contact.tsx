@@ -10,7 +10,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import MetallicText from '@/components/ui/MetallicText';
-import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -24,25 +23,28 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
-    const { error } = await supabase.from('leads').insert({
-      contact_name: formData.get('name') as string || null,
-      company_name: formData.get('company') as string || null,
-      email: formData.get('email') as string || null,
-      phone: formData.get('phone') as string || null,
-      service_requested: service || null,
-      frequency: frequency || null,
-      message: formData.get('message') as string || null,
-      source: 'website' as const,
-      status: 'new' as const,
-    });
-    if (error) {
-      toast.error('Erreur lors de l\'envoi. Veuillez réessayer.');
-    } else {
-      toast.success(t('contact.success.title'), { description: t('contact.success.message') });
-      formRef.current?.reset();
-      setService('');
-      setFrequency('');
-    }
+    const name = formData.get('name') as string || '';
+    const company = formData.get('company') as string || '';
+    const email = formData.get('email') as string || '';
+    const phone = formData.get('phone') as string || '';
+    const message = formData.get('message') as string || '';
+
+    const text = encodeURIComponent(
+      `Bonjour, je souhaite demander un devis.\n\n` +
+      `Nom: ${name}\n` +
+      (company ? `Entreprise: ${company}\n` : '') +
+      `Email: ${email}\n` +
+      `Tél: ${phone}\n` +
+      (service ? `Service: ${service}\n` : '') +
+      (frequency ? `Fréquence: ${frequency}\n` : '') +
+      (message ? `Message: ${message}` : '')
+    );
+
+    window.open(`https://wa.me/32477920961?text=${text}`, '_blank');
+    toast.success(t('contact.success.title'), { description: t('contact.success.message') });
+    formRef.current?.reset();
+    setService('');
+    setFrequency('');
     setIsSubmitting(false);
   };
 
