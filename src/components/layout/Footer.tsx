@@ -138,7 +138,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-white/[0.05]">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/30">
-            <p>© 2025 AM Clean - {t('footer.rights')}</p>
+            <p>© 2026 AM Clean - {t('footer.rights')}</p>
             <p className="text-white/20 text-xs">TVA: BE 0766.610.794</p>
             <div className="flex items-center gap-6">
               <Link to="/privacy" className="hover:text-white/60 transition-colors">
