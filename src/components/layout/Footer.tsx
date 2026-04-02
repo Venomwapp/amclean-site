@@ -23,6 +23,7 @@ const Footer = () => {
 
   const contactInfo = [
     { icon: Phone, value: '+32 470 48 53 42', href: 'tel:+32470485342', label: null },
+    { icon: Phone, value: '0477 92 09 61', href: 'tel:+32477920961', label: null },
     { icon: Mail, value: 'hello@amclean.be', href: 'mailto:hello@amclean.be', label: null },
     { icon: MapPin, value: 'Toute la Belgique', href: null, label: null },
   ];
