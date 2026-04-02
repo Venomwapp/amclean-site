@@ -22,9 +22,8 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: Phone, value: '0470 48 53 42', href: 'tel:+32470485342', label: 'NL/FR' },
-    { icon: Phone, value: '0477 92 09 61', href: 'tel:+32477920961', label: 'FR' },
-    { icon: Mail, value: 'info@amclean.be', href: 'mailto:info@amclean.be', label: null },
+    { icon: Phone, value: '+32 470 48 53 42', href: 'tel:+32470485342', label: null },
+    { icon: Mail, value: 'hello@amclean.be', href: 'mailto:hello@amclean.be', label: null },
     { icon: MapPin, value: 'Toute la Belgique', href: null, label: null },
   ];
 
